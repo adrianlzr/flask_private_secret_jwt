@@ -56,7 +56,7 @@ curl --location --request POST 'http://localhost:5000' \
 }
 ```
 
-**Keep in mind**: 
+### Be aware: 
 * If the *kid* (JWT signing key identifier) attribute is not present in the request payload, it will be different for each jwt generated. Only the first request should not include the *kid* so it can be used when creating the Oauth2 application in Okta. Subsequent requests should use the *kid* that was initially generated so it will not be necessary to update the application before each request for a access_token.
 * The *valid_for* attribute must be a integer and **must** not be higher than 3600 seconds(1 hour). Okta only accepts a JWT which is valid for maximum 1 hour.
 * *"private_key_changed"* will be **true** only when there was no private_key.pem in the root folder, **or** the key was **rotated**. This means that the private_key.pem file was generated and saved on the disk. On subsequent requests, it will be read and used to sign the JWT. 
