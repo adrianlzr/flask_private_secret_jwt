@@ -10,6 +10,8 @@ This Flask server was specifically created to be used by Okta employees / custom
 ## Getting started
 
 ```
+git clone https://github.com/adrianlzr/flask_private_secret_jwt.git
+
 pip install -r requirements.txt
 
 python private_secret_jwt.py
