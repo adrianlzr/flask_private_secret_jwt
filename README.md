@@ -1,5 +1,7 @@
 # flask_private_secret_jwt
+
 Flask Server for issuing a JWT which can be used as a Bearer Token for Okta's APIs
+
 --------------------------
 
 This Flask server was specifically created to be used by Okta employees / customers. It **should** be considered as a POC, but can be forked and customized / enhanced to satisfy the business needs of any individual. This is **not** an official Okta product, nor is it supported by Okta.
