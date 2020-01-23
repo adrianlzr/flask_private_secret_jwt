@@ -94,4 +94,4 @@ curl --location --request POST 'http://localhost:5000?rotate=true' \
 
 ----------------
 ## SUGGESTIONS?
-Please feel free to email me at adrian.lazar95@outlook.com or adrian.lazar@okta.com. I am opened to improvement / suggestions and critics. 
+Please feel free to email me at adrian.lazar95@outlook.com or lzr.adrian95@gmail.com. I am opened to improvement / suggestions and critics. 
