@@ -16,7 +16,7 @@ python private_secret_jwt.py
 The server runs by default on port *5000*. To change the port:
 
 ```
-python private_secret_jwt.py port_number.
+python private_secret_jwt.py port_number
 ```
 **Note**: The port number must be a integer.
 
@@ -59,7 +59,7 @@ curl --location --request POST 'http://localhost:5000' \
 **Keep in mind**: 
 * If the *kid* (JWT signing key identifier) attribute is not present in the request payload, it will be different for each jwt generated. Only the first request should not include the *kid* so it can be used when creating the Oauth2 application in Okta. Subsequent requests should use the *kid* that was initially generated so it will not be necessary to update the application before each request for a access_token.
 * The *valid_for* attribute must be a integer and **must** not be higher than 3600 seconds(1 hour). Okta only accepts a JWT which is valid for maximum 1 hour.
-* *"private_key_changed"* Will be true only when there was no private_key.pem in the root folder, **or** the key was **rotated**. This means that the private_key.pem file was generated and saved on the Disk. On subsequent requests, it will be read and used to sign the jwt. 
+* *"private_key_changed"* will be **true** only when there was no private_key.pem in the root folder, **or** the key was **rotated**. This means that the private_key.pem file was generated and saved on the disk. On subsequent requests, it will be read and used to sign the JWT. 
 
 --------------------------
 
@@ -80,6 +80,7 @@ curl --location --request POST 'http://localhost:5000?rotate=true' \
 ```
 
 ### Response Sample:
+```
 {
     "jwk": {
         "kid": "25c27275-6d6c-42b3-9960-414f1ffaff02",
@@ -89,7 +90,7 @@ curl --location --request POST 'http://localhost:5000?rotate=true' \
     "jwt": "eyJ0eXAiOiAiSldUIiwgImFsZyI6ICJSUzI1NiIsICJ1c2UiOiAic2lnIiwgImtpZCI6ICIyNWMyNzI3NS02ZDZjLTQyYjMtOTk2MC00MTRmMWZmYWZmMDIifQ.eyJhdWQiOiAiaHR0cHM6Ly9hZHJpYW4ub2t0YXByZXZpZXcuY29tL29hdXRoMi92MS90b2tlbiIsICJqdGkiOiAiNDg5NGY2OWEtMjdkMi00ZTJjLWFjMWQtNjMwNjAwM2EzMGY0IiwgImlhdCI6IDE1Nzk3Nzg2NTQsICJleHAiOiAxNTc5NzgyMjU0LCAiaXNzIjogIjBvYXBkOTl4cmZGQ21hRHVWMGg3IiwgInN1YiI6ICIwb2FwZDk5eHJmRkNtYUR1VjBoNyJ9.sbCwhGe60qpcvRaFqI_boYUzHc0Z_AMRJ4s0V9pp6or_xPQ_bRG9zcQiMT3a5y_IrS4iAXiA-XdRJ-_bJTKCXXx4tsqk7FcKiaUcdvoQG0v05_9WejbV_9mKTzzpgDDIn2gfBCsOqYmYeG63b3zOjU24AMwfZs7UO4awg79YwbNd6vIceTPCGT7b3JJvu9aS7qW5G5lTjLT0hQdYnjYFE4fU12t6jres1rRaVbZ-WQFBzUhsJURCd_iz0Wsdl1bkGX8nsWI0rify7IS4HuEkJAXggkp9posukTZSNWymz10QOBdgaMz9S2gzaRIkrLEdLa9qIQfotkeagZ339YZXWQ",
     "private_key_changed": true
 }
-
+```
 
 ----------------
 ## SUGGESTIONS?
