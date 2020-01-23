@@ -67,7 +67,7 @@ curl --location --request POST 'http://localhost:5000' \
 
 ## Key Rotation
 
-To rotate the key (generate a new private key) that is used to sign the JWT, simply append ?rotate=true to the URL. Once the the key was rotated, make sure to update the Oauth2 application in Okta with the new public exponent *n* and *kid* if it was not present in the request.
+To rotate the key (generate a new private key) that is used to sign the JWT, simply append **?rotate=true** to the URL. Once the the key was rotated, make sure to update the Oauth2 application in Okta with the new public exponent *n* and *kid* if it was not present in the request.
 
 ###  Request Sample:
 ```
