@@ -55,7 +55,6 @@ def generate_jwk_and_jwt(client_id, audience, kid, valid_for, rotate):
 
     private_key_changed = False
     if rotate is True:
-        print(rotate)
         private_key = generate_private_key()
         private_key_changed = True
     else:
