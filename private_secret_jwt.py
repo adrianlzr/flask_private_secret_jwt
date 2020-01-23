@@ -77,7 +77,7 @@ def generate_jwk_and_jwt(client_id, audience, kid, valid_for, rotate):
     audience = audience
     jti = str(uuid4())
     iat = int(time())
-    exp = iat + int(valid_for) # By default, it is valid for 5 minutes (300 seconds).
+    exp = iat + int(valid_for) # By default, it is valid for 10 minutes (600 seconds).
     kid = kid
 
     header = {
