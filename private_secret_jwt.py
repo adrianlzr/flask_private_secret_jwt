@@ -50,6 +50,25 @@ def load_private_key():
     return private_key
 
 
+def validate_payload(client_id, audience, valid_for):
+
+    if audience is None and client_id is None:
+        return dumps({"Error":"audience and client_id are mandatory!"})
+
+    if client_id is None:
+        return dumps({"Error":"client_id is mandatory!"})
+
+    if audience is None:
+        return dumps({"Error":"audience is mandatory!"})
+   
+    if not isinstance(valid_for, int):
+        return dumps({"Error":"valid_for must be a integer!"})
+    if valid_for > 3600:
+        return dumps({"Error":"valid_for must not be higher than 3600 seconds (1 hour)!"})
+
+    return "Valid"
+
+
 
 def generate_jwk_and_jwt(client_id, audience, kid, valid_for, rotate):
 
@@ -125,25 +144,6 @@ def generate_jwk_and_jwt(client_id, audience, kid, valid_for, rotate):
     }
 
     return dumps(response)
-
-
-def validate_payload(client_id, audience, valid_for):
-
-    if audience is None and client_id is None:
-        return dumps({"Error":"audience and client_id are mandatory!"})
-
-    if client_id is None:
-        return dumps({"Error":"client_id is mandatory!"})
-
-    if audience is None:
-        return dumps({"Error":"audience is mandatory!"})
-   
-    if not isinstance(valid_for, int):
-        return dumps({"Error":"valid_for must be a integer!"})
-    if valid_for > 3600:
-        return dumps({"Error":"valid_for must not be higher than 3600 seconds (1 hour)!"})
-
-    return "Valid"
 
 app = Flask(__name__)
 
